@@ -1,28 +1,21 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable react-hooks/rules-of-hooks */
-// import axios from 'axios'
-// import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import Navbar from './Navbar'
 export default function Diet({diets}:any){
-    // const [data,setData]=useState([])
-    
-    // useEffect(()=>{
-    //     fetch("http://localhost:2000/api/diets").then(respone=>respone.json()).then(data=>setData(data))
-    // },[])
+
     return(
         <div>
             <Navbar />
-
-                <ul>
+           <Link href ='/breakfast'> <button >Breakfast </button></Link>
+           
             {diets.map((diet:any,index:number)=>(
                     <div key={index}>
-                    <h1>{diet.name}</h1>
-                    <img src={diet.image} />
+                    <h1>{diet.nameReceipe}</h1>
+                    {/* <img src={diet.image} alt="" /> */}
                     <p>{diet.description}</p>
                     </div>
             )
             )}
-            </ul>
+    
           </div>
     )
 }
