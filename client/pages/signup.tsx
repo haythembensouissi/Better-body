@@ -1,40 +1,32 @@
+import { useState } from "react"
 const  Signup =()=>{
+    //sign up 
+ const [emails,setEmail] = useState("")
+ const [passwords,setPassword] = useState("")
+
+
+ const signup:any= async () =>{
+try{
+    await fetch("http://localhost:2000/api/user/signup",{
+     method:"POST",
+     headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({email:emails,password:passwords})
+    })
+console.log(emails,passwords)
+    
+}catch (error) {
+    console.log(error);
+ }
+
+ }
     return(
         <div className="container">
-
-  
-      
           <div className="login-card">
       
             <div className="login-card-items">
-      
-              {/* <h1 className="login-tag">Log In</h1> */}
-{/*       
-              <form className="form-items"> */}
-      
-                {/* <input className="email-item" type="email" placeholder="E-Mail" /> */}
-      
-                {/* <div className="password-item">
-      
-                  <input type="password" placeholder="Password" />
-      
-                  <div className="forgot-password-item">
-      
-                    <a href="#">Forgot password?</a>
-      
-                  </div>
-      
-                </div> */}
-{/*       
-                <button className="button-item" type="button">Log In</button> */}
-{/*       
-                <div className="create-account-item">
-      
-                  <a href="#">Don't have an account? <span>Sign Up</span></a>
-      
-                </div> */}
-      
-              {/* </form> */}
       
             </div>
       
@@ -48,15 +40,19 @@ const  Signup =()=>{
       
               <form className="form-items"> 
       
-                <input className="email-item" type="email" placeholder="E-Mail" />
+                <input className="email-item" type="email" placeholder="E-Mail" onChange={(e)=>{
+                      setEmail(e.target.value);
+                }}/>
       
-                <input className="password-item" type="password" placeholder="Password" />
+                <input className="password-item" type="password" placeholder="Password" onChange={(e)=>{
+                    setPassword(e.target.value);
+                }} />
       
-                <button className="button-item" type="button">Sign Up</button>
+                <button className="button-item" type="button" onClick={()=>{return signup()}}>Sign Up</button>
       
                 <div className="have-account-item">
       
-                  <a href="#">Have already an account? <span>Log In</span></a>
+                 <a href="/login">Have already an account? <span>Log In</span></a>
       
                 </div>
                 </form>
