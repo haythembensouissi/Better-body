@@ -14,7 +14,12 @@ export default function Diet({diets}:any){
              <Link href="Diet/dinner">
             <button>Dinner</button>
              </Link>
-           
+             <div className="search-container">
+         <form >
+      <input type="text" placeholder="Search.." name="search"></input>
+      <button type="submit"><i className="fa fa-search"></i></button>
+    </form>
+  </div>
             {diets.map((diet:any,index:number)=>(
                     <div key={index}>
                     <h1>{diet.nameReceipe}</h1>

@@ -23,8 +23,12 @@ router.get("/api/diets", async (req:Request,res:Response)=>{
 
 // getting recipes by type 
 router.get(`/api/diets/:type`, async (req:Request,res:Response)=>{
-    const breakfast = await DietModel.find({category:req.params.type})
-    return res.send(breakfast)
+    const recipe = await DietModel.find({category:req.params.type})
+    return res.send(recipe)
+})
+router.get(`/api/:term`, async (req:Request,res:Response)=>{
+    const recipe = await DietModel.find({nameReceipe:{$regex:req.params.term,$options:"i"}}).exec()
+    return res.send(recipe)
 })
 
 
