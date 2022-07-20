@@ -1,6 +1,35 @@
+import {useState} from 'react'
+import Link from "next/link"
+import Homepage from "./index"
 
 function login (){
-    return(
+        //log in
+ const [emails,setEmail] = useState("")
+ const [passwords,setPassword] = useState("")
+ const [status,setStatus] = useState(0)
+
+ const Login:any= async () =>{
+
+    await fetch("http://localhost:2000/api/user/login",{
+     method:"POST",
+     headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({email:emails,password:passwords})
+    }).then(resp=>{
+
+    setStatus(resp.status)
+    }).catch(err=>{ console.log(err); });
+    
+}
+
+//chack if the user is logged in to direct him to the home page
+const UserIsLogged:any=()=>{
+    if(status===200){
+        return <Homepage />
+    }else if(status===2001 || status===0){
+  return (
 
 <div className="container">
 
@@ -14,11 +43,15 @@ function login (){
 
       <form className="form-items">
 
-        <input className="email-item" type="email" placeholder="E-Mail" />
+        <input className="email-item" type="email" placeholder="E-Mail" onChange={(e)=>{
+                      setEmail(e.target.value);
+                }}/>
 
         <div className="password-item">
 
-          <input type="password" placeholder="Password" />
+          <input type="password" placeholder="Password" onChange={(e)=>{
+                      setPassword(e.target.value);
+                }}/>
 
           <div className="forgot-password-item">
 
@@ -28,7 +61,7 @@ function login (){
 
         </div>
 
-        <button className="button-item" type="button">Log In</button>
+        <button className="button-item" type="button" onClick={()=>{return Login()}}>Log In</button>
 
         <div className="create-account-item">
 
@@ -46,6 +79,15 @@ function login (){
 
 </div>
 
+</div>
+  )
+    }
+}
+
+
+    return(
+<div>
+{UserIsLogged()}
 </div>
     )
 }

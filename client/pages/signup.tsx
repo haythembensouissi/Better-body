@@ -15,7 +15,6 @@ try{
     },
     body: JSON.stringify({email:emails,password:passwords})
     })
-console.log(emails,passwords)
     
 }catch (error) {
     console.log(error);
