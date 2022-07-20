@@ -5,7 +5,15 @@ export default function Diet({diets}:any){
     return(
         <div>
             <Navbar />
-           <Link href ='/breakfast'> <button >Breakfast </button></Link>
+            <Link href="Diet/breakfast">
+            <button>Breakfast</button>
+             </Link>
+             <Link href="Diet/lunch">
+            <button>Lunch</button>
+             </Link>
+             <Link href="Diet/dinner">
+            <button>Dinner</button>
+             </Link>
            
             {diets.map((diet:any,index:number)=>(
                     <div key={index}>
