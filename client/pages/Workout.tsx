@@ -6,6 +6,7 @@ import getConfig from "next/config"
 import Link from "next/link"
 import { useState } from "react"
 import Navbar from "./Navbar"
+import Card from "@mui/material"
 export default function Workout({workouts}:any){
     const [formInput,setFormInput] = useState([])
     const [searchTerm,setSearchTerm]= useState("")
