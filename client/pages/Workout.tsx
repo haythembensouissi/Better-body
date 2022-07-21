@@ -19,46 +19,56 @@ export default function Workout({workouts}:any){
     }
     const search = async (event)=>{
         event.preventDefault()
-        let newworkouts=await fetch(`/api/workouts/all/${formInput.searchTerm}`).then(response=>response.json())
+        let newworkouts=await fetch(`http://localhost:2000/api/workouts/all/${formInput.searchTerm}`).then(response=>response.json())
         setWorkouts(newworkouts)
+        console.log(newworkouts)
         
     }
    
     
     return(
-        <div>
-            <div className="content">
-   
+       
+            
+        
+        <div className="workouts">
            <form onSubmit={search}>
+           <div className="content">
   <div className="search">
-    <input type="text" className="search__input" aria-label="search" value={searchTerm} onChange={handleInput} placeholder="enter your search"/>
+    <input type="text" className="search__input" aria-label="search" placeholder="enter your search" name="searchTerm" value={searchTerm} onChange={handleInput}/>
     <button className="search__submit" aria-label="submit search"><span className="material-symbols-outlined">
 search
-</span></button>    
+</span></button>
   </div>
-</form>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </div>
-           <Link href="Workout/legs">
-            <button>legs</button>
+</form>      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <Link href="Workout/legs">
+            <button className="custom-btn btn-16">legs</button>
              </Link>
              <Link href="Workout/push">
-            <button>push</button>
+            <button className="custom-btn btn-16">push</button>
              </Link>
+             
+             <Link href="Workout/pull">
+            <button className="custom-btn btn-16">pull</button>
+             </Link>
+
              <Link href="Workout/core">
-            <button>core</button>
+            <button className="custom-btn btn-16">core</button>
              </Link>
          
           
-            {workouts.map((workout:any,index:number)=>(
-                <ul>
-                    <div key={index}></div>
-                    <h1>{workout.name}</h1>
+            {oldworkouts.map((workout:any,index:number)=>(
+                <ul >
+                    <div key={index} className="workoutcomponent">
+                    <h4 className="workoutsname">{workout.name}</h4>
                     <img className="images" src={workout.img}  />
-                    <p>{workout.description}</p>
+                    <p className="workoutsdescription">{workout.description}</p>
+                    </div>
                 </ul>
             ))}
         </div>
+        
     )
 }
 

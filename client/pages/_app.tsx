@@ -1,7 +1,9 @@
 
 import "../styles/globals.css";
 import "../styles/signup.scss";
-import "../styles/Profile.scss";
+// import "../styles/Profile.scss";
+import "../styles/searchbar.scss"
+import "../styles/workout.css"
 import type { AppProps } from "next/app";
 
 
