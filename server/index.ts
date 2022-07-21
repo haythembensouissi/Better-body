@@ -23,6 +23,7 @@ app.use(Dietrouter);
 app.use(workoutRouter);
 app.use(Blogsrouter);
 
+
 mongoose.connect("mongodb://localhost:27017/betterB", () => {
   console.log("Connected to database...");
 });

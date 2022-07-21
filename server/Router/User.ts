@@ -1,4 +1,4 @@
-import express, { Request, response, Response } from "express";
+import express, { Request, Response } from "express";
 import { UserModel } from "../database/user";
 import mongoose from "mongoose";
 import IUser from "../database/user";
@@ -45,10 +45,10 @@ newUser
 })
 
 
-//log in
+// //log in
 router.post('/api/user/login',async (req:Request, res:Response) => {
 
-  const password = req.body.password;
+  const password :any = req.body.password;
 const email= req.body.email; 
 
 
@@ -61,15 +61,19 @@ if (err){
 const isPasswordValid = await bcrypt.compare(password, user.password)
 if (isPasswordValid){
 const token=jwt.sign(
-  {userId:user._id},'auth-BetterB',{expiresIn:'24h'}
-)
-await res.set("set-cookie", token)
-res.status(200).send({userId:user._id,token:token})
-await res.set("set-cookie", token)
-  res.redirect("http://localhost:3000")
+  {userId:user._id,userName:user.email},'RANDOM_TOKEN_SECRET',{expiresIn:'24h'})
+
+ return res.json({userId:user._id,userName:user.email,token:token,connected:200})
+
 }else{
-  res.status(201).send("wrong password")
+  res.json("nope")
+
 }
 }) 
 })
+
+
+
+
+
 export {router as userRouter}

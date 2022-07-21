@@ -1,6 +1,9 @@
+import Link from "next/link"
+
 export default function Type({workouts}:any){
     return(
         <div>
+           
                 <ul>
             {workouts.map((workout:any,index:number)=>(
                     <div key={workout.id}>

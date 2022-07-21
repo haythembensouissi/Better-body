@@ -3,7 +3,7 @@
   }
   
   :root {
-    --clr-primary: #ee6352;
+    --clr-primary: #5252ee;
     --clr-body: #333;
     --clr-bg: #ddd;
   }
@@ -21,11 +21,14 @@
   }
   
   .content {
-    background: white;
+    background-color:transparent; 
     width: 70vw;
     padding: 3em;
     box-shadow: 0 0 3em rgba(0,0,0,.15);
     position: relative;
+    height: 150px;
+ 
+
   }
   
   .search {
@@ -51,8 +54,10 @@
     z-index: 2;
     position: absolute;
     top: 0;
-    bottom: 0;
+    bottom: 0px;
+    margin-bottom: 10px;
     left: 0;
+    
     width: 100%;
     background: transparent;
     opacity: 0;
