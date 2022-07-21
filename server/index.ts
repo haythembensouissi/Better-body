@@ -22,6 +22,7 @@ app.use(workoutRouter)
 
 
 
+
 mongoose.connect("mongodb://localhost:27017/betterB", () => {
   console.log("Connected to database...");
 });
