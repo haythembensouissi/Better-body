@@ -1,17 +1,17 @@
 import { Document, Schema, model } from "mongoose"; 
 export default interface IDiet extends Document {
-    name: string;
-    img: string;
+  nameReceipe: string;
+    image: string;
     description: string;
     category: string;
   }
  
   const DietSchema = new Schema<IDiet>({
-    name: {
+    nameReceipe: {
       type: String,
     
     },
-    img: {
+    image: {
       type: String,
   
     },

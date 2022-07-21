@@ -5,6 +5,7 @@ export default interface IWorkout extends Document {
     img: string;
     description: string;
     categorie:string;
+    week:number;
   }
  
   const WorkoutSchema = new Schema<IWorkout>({
@@ -23,7 +24,11 @@ export default interface IWorkout extends Document {
     categorie:{
         type : String,
         required:true,
-        enum:[]
+        enum:["push","pull","core","legs"]
+    },
+    week:{
+      type :Number,
+      required:true
     }
   });
   export const WorkoutModel =model<IWorkout>("workouts",WorkoutSchema)
