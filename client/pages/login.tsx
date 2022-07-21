@@ -1,50 +1,55 @@
-import {useState} from 'react'
-import Link from "next/link"
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react-hooks/rules-of-hooks */
+import {useState,useEffect} from 'react'
 import Homepage from "./index"
 import axios from "axios";
+
+
 
 function login (){
         //log in
  const [emails,setEmail] = useState("")
  const [passwords,setPassword] = useState("")
- const [status,setStatus] = useState(0)
+
+ const [curentuser,setCurrentUser] = useState("")
+ const [connected,setConnected] = useState(0)
+
+ useEffect(() => {
+ 
+   let connect :any = localStorage.getItem("connected");
+   const loggedInUser:any= localStorage.getItem("userName");
+setCurrentUser(loggedInUser)
+   setConnected(connect)
+}, []);
+
+
 
  const Login:any= async () =>{
-  const  res = await axios.post("http://localhost:2000/api/user/login",{email:emails,password:passwords},{
-    headers: {
-    'Content-Type': 'application/json',
-    'Authorization' : `Bearer ${localStorage.getItem("access_token")}`
-    }});
+  const  res = await axios.post("http://localhost:2000/api/user/login",{email:emails,password:passwords});
   localStorage.setItem("token", res.data.token);
-  console.log(localStorage)
-  setStatus(res.status)
- console.log(res)
+localStorage.setItem("userName", res.data.userName)
+  localStorage.setItem("userId", res.data.userId);
+  localStorage.setItem("connected", res.data.connected);
+
+ 
+ 
  
 };
 
-// const Login:any= async () =>{
 
-//   await fetch("http://localhost:2000/api/user/login",{
-//    method:"POST",
-//    headers: {
-//       "Accept": "application/json",
-//       "Content-Type": "application/json"
-//   },
-//   body: JSON.stringify({email:emails,password:passwords})
-//   }).then(resp=>{
-// console.log(resp)
-//   setStatus(resp.status)
-//   }).then ((data)=>{
-//     console.log(data)
-//   })
-//   .catch(err=>{ console.log(err); });
+
+const UserIsLogged:any=  ()=>{
+  // const loggedInUser :any= localStorage.getItem("userName");
   
-// }
-//chack if the user is logged in to direct him to the home page
-const UserIsLogged:any=()=>{
-    if(status===200){
-        return <Homepage />
-    }else if(status===2001 || status===0){
+//  let connect :any = localStorage.getItem("connected");
+
+  // console.log(connect)
+ if( connected==200){
+    
+       return ( 
+       <div>  <Homepage />welcome back  {curentuser} </div>
+       )
+    }else {
   return (
 
 <div className="container">
@@ -81,7 +86,7 @@ const UserIsLogged:any=()=>{
 
         <div className="create-account-item">
 
-     <a href="/signup">Don't have an account? <span>Sign Up</span></a>
+     <a href="/signup"> Don't have an account? <span>Sign Up</span></a>
 
         </div>
 
@@ -92,18 +97,18 @@ const UserIsLogged:any=()=>{
   </div>
 
 
-
 </div>
 
 </div>
   )
-    }
+              }
 }
 
 
     return(
 <div>
-{UserIsLogged()}
+  
+{ UserIsLogged()}
 </div>
     )
 }
