@@ -24,14 +24,14 @@ export default function Diet({diets}:any){
     return(
 
         <div>
-            <Navbar />
-
             <div>
                 <form onSubmit={search}>
                     <input className="search" name="searchTerm" value={searchTerm} onChange={handleInput} type ="text" required />
                     <button className='btn-search'>search</button>
                 </form>
             </div>
+
+            <div>
             <Link href="Diet/breakfast">
             <button>Breakfast</button>
              </Link>
@@ -41,6 +41,8 @@ export default function Diet({diets}:any){
              <Link href="Diet/dinner">
             <button>Dinner</button>
              </Link>
+
+            </div>
              <div className="search-container">
   </div>
             {oldDiets.map((diet:any,index:number)=>(

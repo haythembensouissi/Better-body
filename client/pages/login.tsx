@@ -1,6 +1,9 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react-hooks/rules-of-hooks */
 import {useState} from 'react'
 import Link from "next/link"
 import Homepage from "./index"
+import axios from "axios";
 
 function login (){
         //log in
@@ -9,21 +12,36 @@ function login (){
  const [status,setStatus] = useState(0)
 
  const Login:any= async () =>{
+  const  res = await axios.post("http://localhost:2000/api/user/login",{email:emails,password:passwords},{
+    headers: {
+    'Content-Type': 'application/json',
+    'Authorization' : `Bearer ${localStorage.getItem("access_token")}`
+    }});
+  localStorage.setItem("token", res.data.token);
+  console.log(localStorage)
+  setStatus(res.status)
+ console.log(res)
+ 
+};
 
-    await fetch("http://localhost:2000/api/user/login",{
-     method:"POST",
-     headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({email:emails,password:passwords})
-    }).then(resp=>{
+// const Login:any= async () =>{
 
-    setStatus(resp.status)
-    }).catch(err=>{ console.log(err); });
-    
-}
-
+//   await fetch("http://localhost:2000/api/user/login",{
+//    method:"POST",
+//    headers: {
+//       "Accept": "application/json",
+//       "Content-Type": "application/json"
+//   },
+//   body: JSON.stringify({email:emails,password:passwords})
+//   }).then(resp=>{
+// console.log(resp)
+//   setStatus(resp.status)
+//   }).then ((data)=>{
+//     console.log(data)
+//   })
+//   .catch(err=>{ console.log(err); });
+  
+// }
 //chack if the user is logged in to direct him to the home page
 const UserIsLogged:any=()=>{
     if(status===200){
@@ -65,7 +83,7 @@ const UserIsLogged:any=()=>{
 
         <div className="create-account-item">
 
-     <a href="/signup">Don't have an account? <span>Sign Up</span></a>
+     <a href="/signup"> Don't have an account? <span>Sign Up</span></a>
 
         </div>
 
