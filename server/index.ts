@@ -6,6 +6,10 @@ import { Dietrouter } from "./Router/Diet";
 import { workoutRouter } from "./Router/workouts";
 import cors from "cors"
 const app=express()
+//parse cookies
+import cookieParser from "cookie-parser";
+app.use(cookieParser())
+
 app.use(json());
 const port=2000
 //app
@@ -15,7 +19,6 @@ app.use(cors())
 app.use(userRouter)
 app.use(Dietrouter)
 app.use(workoutRouter)
-
 
 
 
