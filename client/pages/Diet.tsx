@@ -25,16 +25,6 @@ export default function Diet({ diets }: any) {
     console.log(newDiets);
   };
   return (
-    <div>
-      <Navbar />
-    }
-    const search = async (event) =>{
-        event.preventDefault()
-         let newDiets = await fetch(`http://localhost:2000/api/${formInput.searchTerm}`).then(response => response.json())
-         setDiets(newDiets)
-         console.log(newDiets)
-    }
-    return(
 
         <div>
             <div>
