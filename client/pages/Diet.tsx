@@ -9,22 +9,20 @@ export default function Diet({diets}:any){
     const [oldDiets, setDiets] = useState(diets)
     
 
+    const handleInput =(event:any)=>{
+        let {name,value} = event.target
+        setFormInput({...formInput,[name]:value})
+        setSearchTerm(event.target.value)
 
 
-  const handleInput = (event: any) => {
-    let { name, value } = event.target;
-    setFormInput({ ...formInput, [name]: value });
-    setSearchTerm(event.target.value);
-  };
-  const search = async (event) => {
-    event.preventDefault();
-    let newDiets = await fetch(
-      `http://localhost:2000/api/${formInput.searchTerm}`
-    ).then((response) => response.json());
-    setDiets(newDiets);
-    console.log(newDiets);
-  };
-  return (
+    }
+    const search = async (event) =>{
+        event.preventDefault()
+         let newDiets = await fetch(`http://localhost:2000/api/${formInput.searchTerm}`).then(response => response.json())
+         setDiets(newDiets)
+         console.log(newDiets)
+    }
+    return(
 
         <div>
             <div>
