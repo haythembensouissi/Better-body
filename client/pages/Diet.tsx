@@ -23,7 +23,7 @@ export default function Diet({diets}:any){
             {diets.map((diet:any,index:number)=>(
                     <div key={index}>
                     <h1>{diet.nameReceipe}</h1>
-                    {/* <img src={diet.image} alt="" /> */}
+                    <img src={diet.image} alt="" />
                     <p>{diet.description}</p>
                     </div>
             )

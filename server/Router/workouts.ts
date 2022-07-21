@@ -3,9 +3,9 @@ import { WorkoutModel } from "../database/workout";
 import express, { Request, Response } from "express";
 const router=express.Router()
 //get allworkouts
-router.get("/api/workouts",async (req:Request,res:Response)=>{
-    const workout= await WorkoutModel.find({})
-    res.status(200).send(workout)
+router.get("/api/workouts/all", async (req:Request,res:Response)=>{
+  const workout= await WorkoutModel.find({})
+  res.status(202).send(workout)
 })
 // //get push workouts
 // router.get("/api/workouts/push", async (req:Request,res:Response)=>{
@@ -52,6 +52,11 @@ router.post("/api/workouts",async (req:Request,res:Response)=>{
 export {router as workoutRouter}
 
 router.get(`/api/workouts/:type`, async (req:Request,res:Response)=>{
-    const breakfast = await WorkoutModel.find({categorie:req.params.type})
-    return res.send(breakfast)
+    const workout = await WorkoutModel.find({categorie:req.params.type})
+    return res.send(workout)
+})
+
+router.get('/api/workouts/all/:name',async (req:Request,res:Response)=>{
+    const workout = await WorkoutModel.find({name:{$regex:req.params.name,$options:"i"}}).exec()
+    return res.status(200).send(workout)
 })

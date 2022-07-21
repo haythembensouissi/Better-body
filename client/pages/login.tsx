@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react-hooks/rules-of-hooks */
 import {useState} from 'react'
 import Link from "next/link"
 import Homepage from "./index"
@@ -65,7 +67,7 @@ const UserIsLogged:any=()=>{
 
         <div className="create-account-item">
 
-     <a href="/signup">Don't have an account? <span>Sign Up</span></a>
+     <a href="/signup"> Don't have an account? <span>Sign Up</span></a>
 
         </div>
 
