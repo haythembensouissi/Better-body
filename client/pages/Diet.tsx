@@ -3,7 +3,6 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import Navbar from './Navbar'
 
 
 export default function Diet({ diets }: any) {
