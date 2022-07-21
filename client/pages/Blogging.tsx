@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Addblog from "./AddBlog";
 
 export default function Blogging({ blogs }: any) {
   const [bblogs, setBlogs] = useState(blogs);
@@ -18,33 +19,8 @@ export default function Blogging({ blogs }: any) {
       <button onClick={() => form()}>add blog</button>
       {addblog && (
         <div>
-          <form action="http://localhost:2000/api/blogs" method="post">
-            <label htmlFor="title">title :</label>
-
-            <input
-              type="text"
-              name="blogTitle"
-              id="blogTitle"
-              placeholder="Title"
-            />
-            <label htmlFor="Author">Author :</label>
-
-            <input
-              type="text"
-              name="blogAuthor"
-              id="blogAuthor"
-              placeholder="Author"
-            />
-            <br />
-            <label htmlFor="content">content :</label>
-
-            <textarea
-              name="blogContent"
-              id="blogContent"
-              placeholder="content"
-            ></textarea>
-            <button type="submit">Submit</button>
-          </form>
+          {" "}
+          <Addblog />
         </div>
       )}
 
