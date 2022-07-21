@@ -63,12 +63,10 @@ if (isPasswordValid){
 const token=jwt.sign(
   {userId:user._id,userName:user.email},'RANDOM_TOKEN_SECRET',{expiresIn:'24h'})
 
- res.json({userId:user._id,userName:user.email,token:token,connected:200})
- return res.redirect("http://localhost:3000")
+ return res.json({userId:user._id,userName:user.email,token:token,connected:200})
 
 }else{
-  res.json({connected:false})
-  res.status(404).json("wrong password")
+  res.json("nope")
 
 }
 }) 
