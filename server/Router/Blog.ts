@@ -9,7 +9,7 @@ router.get("/api/blogs/get", async (req: Request, res: Response) => {
   return res.status(200).send(blogs);
 });
 
-router.post("/api/blogs", async (req: Request, res: Response) => {
+router.post("/api/blogs/add", async (req: Request, res: Response) => {
   const blogTitle = req.body.blogTitle;
   const blogImage = req.body.blogImage;
   const blogAuthor = req.body.blogAuthor;
