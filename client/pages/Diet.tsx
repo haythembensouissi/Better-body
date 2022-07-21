@@ -1,14 +1,14 @@
 // @ts-nocheck
-
-
 import Link from 'next/link'
 import { useState } from 'react'
 
+export default function Diet({diets}:any){
+    const [formInput ,setFormInput] = useState([])
+    const [searchTerm, setSearchTerm]= useState("")
+    const [oldDiets, setDiets] = useState(diets)
+    
 
-export default function Diet({ diets }: any) {
-  const [formInput, setFormInput] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [oldDiets, setDiets] = useState(diets);
+
 
   const handleInput = (event: any) => {
     let { name, value } = event.target;
@@ -41,13 +41,14 @@ export default function Diet({ diets }: any) {
             <button>Lunch</button>
              </Link>
              <Link href="Diet/dinner">
-            <button className='btn'> Dinner</button>
+            <button>Dinner</button>
              </Link>
+
             </div>
              <div className="search-container">
-            </div>
+  </div>
             {oldDiets.map((diet:any,index:number)=>(
-            <ul className="cards">
+                   <ul className="cards">
                    <li className="cards__item">
                     <div className="card">
                        <img className="card__image card__image--fence" src={diet.image}/>
@@ -58,20 +59,27 @@ export default function Diet({ diets }: any) {
                        </div>
                      </div>
                    </li>
-             </ul>        
+             </ul>   
             )
             )}
+    
           </div>
     )
 }
 export async function getStaticProps() {
-  const diets = await fetch("http://localhost:2000/api/diets").then(
-    (response) => response.json()
-  );
+    const diets = await fetch ("http://localhost:2000/api/diets").then(response => response.json())
+    
+    return {
+        props:{
+            diets
+        }
+    }
+}   
 
-  return {
-    props: {
-      diets,
-    },
-  };
-}
+
+
+
+ 
+
+
+
