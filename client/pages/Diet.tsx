@@ -14,6 +14,7 @@ export default function Diet({diets}:any){
         setFormInput({...formInput,[name]:value})
         setSearchTerm(event.target.value)
 
+
     }
     const search = async (event) =>{
         event.preventDefault()
