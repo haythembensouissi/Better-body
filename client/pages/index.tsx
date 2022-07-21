@@ -7,8 +7,8 @@ function Homepage(){
         <div>
     
         <Navbar/>  
- <Link href="/signup"><button> signup </button></Link>
- <Link href="/login"><button> login </button></Link>
+ <Link href="/signup"><button  > signup </button></Link>
+ <Link href="/login"><button > login </button></Link>
                    </div>
     )
 }
