@@ -11,7 +11,7 @@ import cookieParser from "cookie-parser";
 app.use(cookieParser())
 
 app.use(json());
-const port=2000
+const port=3001
 //app
 app.use(express.json())
 app.use(cors())
@@ -19,6 +19,7 @@ app.use(cors())
 app.use(userRouter)
 app.use(Dietrouter)
 app.use(workoutRouter)
+
 
 
 
