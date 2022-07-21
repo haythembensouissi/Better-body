@@ -30,14 +30,20 @@ setCurrentUser(loggedInUser)
 localStorage.setItem("userName", res.data.userName)
   localStorage.setItem("userId", res.data.userId);
   localStorage.setItem("connected", res.data.connected);
-
+console.log(res)
  
  
  
 };
 
 
-
+const Logout = () => {
+  setCurrentUser("");
+  setEmail("");
+  setPassword("");
+  setConnected(0)
+  localStorage.clear();
+};
 const UserIsLogged:any=  ()=>{
   // const loggedInUser :any= localStorage.getItem("userName");
   
@@ -47,7 +53,10 @@ const UserIsLogged:any=  ()=>{
  if( connected==200){
     
        return ( 
-       <div>  <Homepage />welcome back  {curentuser} </div>
+       <div>  <Homepage />welcome back  {curentuser} 
+       
+       <button onClick={()=>{return Logout()}}>Logout</button>
+       </div>
        )
     }else {
   return (
