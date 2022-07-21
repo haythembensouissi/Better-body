@@ -1,20 +1,32 @@
 // @ts-nocheck
 
+
 import Link from 'next/link'
 import { useState } from 'react'
 import Navbar from './Navbar'
 
-export default function Diet({diets}:any){
-    const [formInput ,setFormInput] = useState([])
-    const [searchTerm, setSearchTerm]= useState("")
-    const [oldDiets, setDiets] = useState(diets)
-    
 
-    const handleInput =(event:any)=>{
-        let {name,value} = event.target
-        setFormInput({...formInput,[name]:value})
-        setSearchTerm(event.target.value)
+export default function Diet({ diets }: any) {
+  const [formInput, setFormInput] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [oldDiets, setDiets] = useState(diets);
 
+  const handleInput = (event: any) => {
+    let { name, value } = event.target;
+    setFormInput({ ...formInput, [name]: value });
+    setSearchTerm(event.target.value);
+  };
+  const search = async (event) => {
+    event.preventDefault();
+    let newDiets = await fetch(
+      `http://localhost:2000/api/${formInput.searchTerm}`
+    ).then((response) => response.json());
+    setDiets(newDiets);
+    console.log(newDiets);
+  };
+  return (
+    <div>
+      <Navbar />
     }
     const search = async (event) =>{
         event.preventDefault()
@@ -64,19 +76,13 @@ export default function Diet({diets}:any){
     )
 }
 export async function getStaticProps() {
-    const diets = await fetch ("http://localhost:2000/api/diets").then(response => response.json())
-    
-    return {
-        props:{
-            diets
-        }
-    }
-}   
+  const diets = await fetch("http://localhost:2000/api/diets").then(
+    (response) => response.json()
+  );
 
-
-
-
- 
-
-
-
+  return {
+    props: {
+      diets,
+    },
+  };
+}
