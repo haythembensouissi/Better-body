@@ -1,5 +1,6 @@
 import Image from "next/image";
 function Profile() {
+  const description = "fat";
   return (
     <div className="profile">
       <div className="card">
@@ -16,13 +17,13 @@ function Profile() {
 
         <div className="ds-info">
           <div className="ds pens">
-            <h6 title="Number of pens created by the user">
+            <h6 title="height">
               height <i className="fas fa-edit"></i>
             </h6>
             <p>29</p>
           </div>
           <div className="ds projects">
-            <h6 title="Number of projects created by the user">
+            <h6 title="weight">
               weight <i className="fas fa-project-diagram"></i>
             </h6>
             <p>0</p>
@@ -40,11 +41,21 @@ function Profile() {
             <h6>
               <i className="fab "></i> IMC{" "}
             </h6>
-            <div>
+            {description === "fat" && (
               <div className="bar bar-FAT">
                 <p>34</p>
               </div>
-            </div>
+            )}
+            {description === "normal" && (
+              <div className="bar bar-NORMAL">
+                <p>34</p>
+              </div>
+            )}
+            {description === "under" && (
+              <div className="bar bar-UNDER">
+                <p>34</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
