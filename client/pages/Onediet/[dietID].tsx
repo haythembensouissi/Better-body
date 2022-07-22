@@ -1,15 +1,10 @@
-export default function Type({diets}:any){
+export default function OneDiet({diet}:any){
+
     return(
         <div>
                 <ul>
-            {diets.map((diet:any,index:number)=>(
-
-                    
-                     <ul className="cards">
-
                 <div key = {diet._id}>         
                     <ul className="cards">
-
                      <li className="cards__item">
                       <div className="card">
                          <img className="card__image card__image--fence" src={diet.image}/>
@@ -22,18 +17,16 @@ export default function Type({diets}:any){
                      </li>
                </ul> 
              </div>      
-            )
-            )}
             </ul>
           </div>
     )
 }
 export async function getServerSideProps({params}:any) {
   console.log(params)
- const diets  = await fetch (`http://localhost:2000/api/diets/${params.typeID}`).then(response => response.json())
+ const diet  = await fetch (`http://localhost:2000/api/oneDiet/${params.dietID}`).then(response => response.json())
  return {
     props:{
-        diets
+        diet
     }
  }
 }   
