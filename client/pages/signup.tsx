@@ -51,7 +51,7 @@ try{
       
                 <div className="have-account-item">
       
-                 <a href="/login">Have already an account? <span>Log In</span></a>
+                 <a href="/">Have already an account? <span>Log In</span></a>
       
                 </div>
                 </form>
