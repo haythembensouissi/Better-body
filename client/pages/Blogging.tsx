@@ -5,7 +5,7 @@ export default function Blogging({ blogs }: any) {
   const [bblogs, setBlogs] = useState(blogs);
   const [addblog, setAdd] = useState(false);
 
-  function form() {
+  function showForm() {
     if (addblog === false) {
       setAdd(true);
     } else {
@@ -14,22 +14,40 @@ export default function Blogging({ blogs }: any) {
   }
 
   return (
-    <div>
-      <h1>feel free and create a new blog here</h1>
-      <button onClick={() => form()}>add blog</button>
-      {addblog && (
-        <div>
-          {" "}
-          <Addblog />
-        </div>
-      )}
-
+    <div className="blogBody">
+      <div className="addblog">
+        <p>
+          feel free and create a new blog{" "}
+          <a onClick={() => showForm()} className="here">
+            <i> here </i>
+          </a>
+        </p>
+        {addblog && (
+          <div>
+            <br />
+            <Addblog />
+            <br />
+          </div>
+        )}
+      </div>
       {bblogs.map((blog: any, index: number) => (
         <div key={index}>
-          <h1>{blog.blogTitle}</h1>
-          <img src={blog.image} alt="" />
-          <h3>{blog.blogAuthor}</h3>
-          <p>{blog.blogContent}</p>
+          <ul className="blogCards">
+            <li className="cards__item">
+              <div className="blogCards">
+                <div className="card__content">
+                  <h3>blog Author{blog.blogAuthor}</h3>
+                  <div className="card__title">{blog.blogTitle}</div>
+                  {/* <img
+                    className="card__image card__image--fence"
+                    src={blog.blogImage}
+                  /> */}
+
+                  <p className="card__text ellipsis">{blog.blogContent} </p>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
       ))}
     </div>

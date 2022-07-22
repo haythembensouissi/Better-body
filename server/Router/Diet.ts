@@ -25,12 +25,17 @@ router.get(`/api/diets/:type`, async (req: Request, res: Response) => {
   const recipe = await DietModel.find({ category: req.params.type });
   return res.send(recipe);
 });
-router.get(`/api/:term`, async (req: Request, res: Response) => {
-  console.log(req.params.term);
+router.get(`/api/search/:term`, async (req: Request, res: Response) => {
   const recipe = await DietModel.find({
     nameReceipe: { $regex: req.params.term, $options: "i" },
   }).exec();
   return res.send(recipe);
 });
+
+router.get(`/api/oneDiet/:id`,async (req:Request, res:Response)=>{
+  console.log(req.params.id)
+   const recipe = await DietModel.findById(req.params.id).exec();
+    res.send(recipe)
+})
 
 export { router as Dietrouter };
