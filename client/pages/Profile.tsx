@@ -3,7 +3,7 @@ function Profile() {
   const description = "fat";
   return (
     <div className="profile">
-      <div className="card">
+      {/* <div className="card">
         <div className="ds-top"></div>
         <div className="avatar-holder">
           <img
@@ -58,7 +58,7 @@ function Profile() {
             )}
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
