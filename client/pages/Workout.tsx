@@ -68,12 +68,12 @@ search
             {oldworkouts.sort((a,b)=>a.week-b.week).map((workout:any,index:number)=>(
                 <ul className="cards">
                 <li className="cards__item">
-                 <div className="card">
+                 <div className="workoutcard">
                     <h1>week {workout.week}</h1>
-                    <img className="card__image card__image--fence" src={workout.img}/>
+                    <img className="workoutimage card__image--fence" src={workout.img}/>
                     <div className="card__content">
                       <div className="card__title">{workout.name}</div>
-                      <p className="card__text">{workout.description} </p>
+                    
                    
                       <Link href={`oneWorkout/${workout._id}`}><button className="btn btn--block card__btn">Button</button></Link>
                     </div>

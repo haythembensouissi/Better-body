@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export default function Type({newworkouts}:any){
     return(
         <div>
@@ -6,12 +8,12 @@ export default function Type({newworkouts}:any){
                      // eslint-disable-next-line react/jsx-key
                      <ul className="cards">
                      <li className="cards__item">
-                      <div className="card">
-                         <img className="card__image card__image--fence" src={workout.img}/>
+                      <div className="oneworkoutcard">
+                         <img className=" oneworkoutimage" src={workout.img}/>
                          <div className="card__content">
                            <div className="card__title">{workout.name}</div>
                            <p className="card__text">{workout.description} </p>
-                           <button className="btn btn--block card__btn">Button</button>
+                         <Link href="/Workout"><button className="pulse button">back</button></Link>
                          </div>
                        </div>
                      </li>
