@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 // @ts-nocheck
 import Link from 'next/link'
 import { useState } from 'react'
