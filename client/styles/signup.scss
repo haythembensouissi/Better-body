@@ -8,6 +8,7 @@
 }
 
 @mixin login-signup-card-settings {
+  
   width: 500px;
   height: auto;
 
@@ -142,15 +143,7 @@ $letter-spacing: 0.85px;
   padding: 0;
 }
 
-body {
-  @include display-flex;
 
-  height: 100vh;
-
-  color: $primary-color;
-  background-color: #f3f4f6;
-  font-family: "Raleway", sans-serif;
-}
 
 .login-signup-cards {
   @include display-flex;
@@ -245,3 +238,4 @@ body {
 
 
 
+// navbar
