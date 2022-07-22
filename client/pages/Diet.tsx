@@ -9,20 +9,24 @@ export default function Diet({diets}:any){
     const [oldDiets, setDiets] = useState(diets)
     
 
-    const handleInput =(event:any)=>{
-        let {name,value} = event.target
-        setFormInput({...formInput,[name]:value})
-        setSearchTerm(event.target.value)
 
 
-    }
-    const search = async (event) =>{
-        event.preventDefault()
-         let newDiets = await fetch(`http://localhost:2000/api/${formInput.searchTerm}`).then(response => response.json())
-         setDiets(newDiets)
-         console.log(newDiets)
-    }
-    return(
+
+  const handleInput = (event: any) => {
+    let { name, value } = event.target;
+    setFormInput({ ...formInput, [name]: value });
+    setSearchTerm(event.target.value);
+  };
+  const search = async (event) => {
+    event.preventDefault();
+    let newDiets = await fetch(
+      `http://localhost:2000/api/search/${formInput.searchTerm}`
+    ).then((response) => response.json());
+    setDiets(newDiets);
+    console.log(newDiets);
+  };
+  return (
+
 
         <div>
             <div>
@@ -47,6 +51,7 @@ export default function Diet({diets}:any){
              <div className="search-container">
   </div>
             {oldDiets.map((diet:any,index:number)=>(
+              <div key={diet._id}>
                    <ul className="cards">
                    <li className="cards__item">
                     <div className="card">
@@ -54,11 +59,12 @@ export default function Diet({diets}:any){
                        <div className="card__content">
                          <div className="card__title">{diet.nameReceipe}</div>
                          <p className="card__text">{diet.description} </p>
-                         <button className="btn btn--block card__btn">Button</button>
+                         <Link href={`Onediet/${diet._id}`}><button className="btn btn--block card__btn">Button</button></Link>
                        </div>
                      </div>
                    </li>
-             </ul>   
+             </ul> 
+             </div>  
             )
             )}
     
