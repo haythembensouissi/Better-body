@@ -8,7 +8,7 @@
 }
 
 @mixin login-signup-card-settings {
-  
+  margin-top: 150px;
   width: 500px;
   height: auto;
 
@@ -115,6 +115,7 @@
     font-size: 15px;
 
     span {
+      cursor: pointer;
       font-weight: $font-weight;
     }
 
@@ -222,7 +223,9 @@ $letter-spacing: 0.85px;
         input[type="password"] {
           @include input-settings;
         }
-
+        input[type="text"] {
+          @include input-settings;
+        }
         button[type="button"] {
           @include button-settings;
         }
