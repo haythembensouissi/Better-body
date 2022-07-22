@@ -1,6 +1,6 @@
-*, *::before, *::after {
-    box-sizing: border-box;
-  }
+// *, *::before, *::after {
+//     box-sizing: border-box;
+//   }
   
   :root {
     --clr-primary: #5252ee;
@@ -9,15 +9,16 @@
   }
   
   body {
-    font-family: basic-sans, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.125em;
-    line-height: 1.6;
-    color: var(--clr-body);
-    background: var(--clr-bg);
+    // font-family: basic-sans, sans-serif;
+    // // min-height: 100vh;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // font-size: 1.125em;
+    // // line-height: 1.6;
+    // color: var(--clr-body);
+    // background: var(--clr-bg);
+    height: fit-content;
   }
   
   .content {
