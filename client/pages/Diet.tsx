@@ -1,7 +1,6 @@
 // @ts-nocheck
 import Link from 'next/link'
 import { useState } from 'react'
-import Navbar from './Navbar'
 
 export default function Diet({diets}:any){
     const [formInput ,setFormInput] = useState([])
@@ -9,29 +8,32 @@ export default function Diet({diets}:any){
     const [oldDiets, setDiets] = useState(diets)
     
 
-    const handleInput =(event:any)=>{
-        let {name,value} = event.target
-        setFormInput({...formInput,[name]:value})
-        setSearchTerm(event.target.value)
 
-    }
-    const search = async (event) =>{
-        event.preventDefault()
-         let newDiets = await fetch(`http://localhost:2000/api/${formInput.searchTerm}`).then(response => response.json())
-         setDiets(newDiets)
-         console.log(newDiets)
-    }
-    return(
+
+  const handleInput = (event: any) => {
+    let { name, value } = event.target;
+    setFormInput({ ...formInput, [name]: value });
+    setSearchTerm(event.target.value);
+  };
+  const search = async (event) => {
+    event.preventDefault();
+    let newDiets = await fetch(
+      `http://localhost:2000/api/${formInput.searchTerm}`
+    ).then((response) => response.json());
+    setDiets(newDiets);
+    console.log(newDiets);
+  };
+  return (
 
         <div>
-            <Navbar />
-
             <div>
                 <form onSubmit={search}>
                     <input className="search" name="searchTerm" value={searchTerm} onChange={handleInput} type ="text" required />
                     <button className='btn-search'>search</button>
                 </form>
             </div>
+
+            <div>
             <Link href="Diet/breakfast">
             <button>Breakfast</button>
              </Link>
@@ -41,14 +43,23 @@ export default function Diet({diets}:any){
              <Link href="Diet/dinner">
             <button>Dinner</button>
              </Link>
+
+            </div>
              <div className="search-container">
   </div>
             {oldDiets.map((diet:any,index:number)=>(
-                    <div key={index}>
-                    <h1>{diet.nameReceipe}</h1>
-                    <img src={diet.image} alt="" />
-                    <p>{diet.description}</p>
-                    </div>
+                   <ul className="cards">
+                   <li className="cards__item">
+                    <div className="card">
+                       <img className="card__image card__image--fence" src={diet.image}/>
+                       <div className="card__content">
+                         <div className="card__title">{diet.nameReceipe}</div>
+                         <p className="card__text">{diet.description} </p>
+                         <button className="btn btn--block card__btn">Button</button>
+                       </div>
+                     </div>
+                   </li>
+             </ul>   
             )
             )}
     
