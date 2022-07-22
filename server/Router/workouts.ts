@@ -60,3 +60,9 @@ router.get('/api/workouts/all/:name',async (req:Request,res:Response)=>{
     const workout = await WorkoutModel.find({name:{$regex:req.params.name,$options:"i"}}).exec()
     return res.status(200).send(workout)
 })
+router.get("/api/workouts/all/one/:id",async(req:Request,res:Response)=>{
+    console.log(req.params.id);
+    
+    const workout= await WorkoutModel.findById(req.params.id)
+    return res.status(200).send(workout)
+})
