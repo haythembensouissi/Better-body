@@ -29,5 +29,9 @@ router.post("/api/blogs/add", async (req: Request, res: Response) => {
     })
     .catch((error) => console.log(error));
 });
+router.get("/api/blogs/getOne", async (req: Request, res: Response) => {
+  const blogs = await blogsModel.findOne({});
+  return res.status(200).send(blogs);
+});
 
 export { router as Blogsrouter };

@@ -1,0 +1,22 @@
+.blogCards {
+  text-align: center;
+
+  margin: 0;
+  padding: 0;
+}
+.addblog {
+  text-align: center;
+}
+.here {
+  font-weight: bold;
+  cursor: pointer;
+}
+.blogBody {
+  text-align: center;
+}
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
