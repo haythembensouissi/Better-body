@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 // @ts-nocheck
 import Link from 'next/link'
 import { useState } from 'react'
@@ -7,6 +8,7 @@ export default function Diet({diets}:any){
     const [searchTerm, setSearchTerm]= useState("")
     const [oldDiets, setDiets] = useState(diets)
     
+
 
 
 
@@ -24,6 +26,7 @@ export default function Diet({diets}:any){
     console.log(newDiets);
   };
   return (
+
 
         <div>
             <div>
