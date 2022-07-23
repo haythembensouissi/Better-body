@@ -8,6 +8,8 @@ import Layout from '../component/layout'
 import { useState, useEffect } from "react";
 import Homepage from "./index";
 import axios from "axios";
+import "../styles/contact.scss"
+import "../styles/Profile.scss"
 
 import type { AppProps } from "next/app";
 
