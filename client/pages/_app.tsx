@@ -8,6 +8,7 @@ import Layout from '../component/layout'
 import { useState, useEffect } from "react";
 import Homepage from "./index";
 import axios from "axios";
+import "../styles/recipe.css"
 
 import type { AppProps } from "next/app";
 
@@ -18,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 const [name1,setName1] = useState("")
 const [emails1,setEmail1] = useState("")
  const [passwords1,setPassword1] = useState("")
-
+const [img,setImg1] = useState("")
 
  const signup:any= async () =>{
 try{
@@ -180,8 +181,11 @@ try{
               <h1 className="signup-tag">Sign Up</h1>
       
               <form className="form-items"> 
-         <input className="password-item" type="text" placeholder="Password" onChange={(e)=>{
+         <input className="password-item" type="text" placeholder="Name" onChange={(e)=>{
                     setName1(e.target.value);
+                }} />
+                 <input className="password-item" type="text" placeholder="Img" onChange={(e)=>{
+                    setImg1(e.target.value);
                 }} />
                 <input className="email-item" type="email" placeholder="E-Mail" onChange={(e)=>{
                       setEmail1(e.target.value);
