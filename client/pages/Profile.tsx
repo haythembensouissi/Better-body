@@ -1,5 +1,5 @@
 import Image from "next/image";
-function Profile({user,image,email}:any) {
+function Profile({user,image,email,log}:any) {
   return (
     <div >
 <div className="wrapper">
@@ -25,7 +25,10 @@ function Profile({user,image,email}:any) {
 
   
 </div>
-<div id="container">
+
+<div id="container" onClick={()=>{
+  return log()
+}}>
   <button className="face-button">
     <span className="face-container">
       <span className="eye left"></span>

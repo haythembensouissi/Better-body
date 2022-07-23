@@ -10,7 +10,7 @@ import Homepage from "./index";
 import axios from "axios";
 import "../styles/contact.scss"
 import "../styles/Profile.scss"
-
+import "../styles/Home.css"
 import type { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -100,15 +100,9 @@ try{
             <Layout>
 
 {" "}
-<Component {...pageProps} user={curentuser} image={img} email={email} />
+<Component {...pageProps} user={curentuser} image={img} email={email} log={Logout} />
            </Layout>
-            <button
-              onClick={() => {
-                return Logout();
-              }}
-            >
-              Logout
-            </button>
+        
           </div>
         );
         
