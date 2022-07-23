@@ -8,6 +8,7 @@ import Layout from '../component/layout'
 import { useState, useEffect } from "react";
 import Homepage from "./index";
 import axios from "axios";
+import "../styles/recipe.css"
 
 import type { AppProps } from "next/app";
 
