@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export default function Type({diets}:any){
   return(
       <div>
@@ -11,7 +13,7 @@ export default function Type({diets}:any){
                        <div className="card__content">
                          <div className="card__title">{diet.nameReceipe}</div>
                          <p className="card__text">{diet.description} </p>
-                         <button className="btn btn--block card__btn">Button</button>
+                         <Link href={`/Onediet/${diet._id}`}><button className="btn btn--block card__btn">Button</button></Link>
                        </div>
                      </div>
                    </li>
