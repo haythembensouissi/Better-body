@@ -6,11 +6,16 @@ import getConfig from "next/config"
 import Link from "next/link"
 import { useState } from "react"
 import Navbar from "./Navbar"
+function Popup(){
+  return(
+    <h1>Popup page</h1>
+  )
+}
 export default function Workout({workouts}:any){
     const [formInput,setFormInput] = useState([])
     const [searchTerm,setSearchTerm]= useState("")
     const [oldworkouts, setWorkouts] = useState(workouts)
-    
+    const [showPopup,setshowPopup]=useState(false)
     const handleInput =(event:any)=>{
         let {name,value} = event.target
         setFormInput({...formInput,[name]:value})
@@ -75,12 +80,39 @@ search
                       <div className="card__title">{workout.name}</div>
                     
                    
-                      <Link href={`oneWorkout/${workout._id}`}><button className="btn btn--block card__btn">Button</button></Link>
+                      <Link href={`oneWorkout/${workout._id}`}><button className="btn btn--block card__btn">learn more</button></Link>
+                      <button className="btn" onClick={()=>{setshowPopup(true)}}>pay here</button>
                     </div>
                   </div>
                 </li>
           </ul>   
             ))}
+            { showPopup? (<div className="Popup" >
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+            <span className="material-symbols-outlined" onClick={()=>setshowPopup(false)}>
+cancel
+</span> 
+
+<form className="paymentform">
+<div>
+          
+     <input type="text" className="input" placeholder="enter the card code"/>
+              </div>
+              <div>
+              <input type="date" className="input" placeholder="enter the expiration date "/>
+              </div>
+              <div>
+          
+     <input type="text" className="input" placeholder="CVV"/>
+              </div>
+              <div>
+                <button className='formbutton' >confirm</button>
+              </div>
+              </form>
+            
+            
+      
+            </div>) : null}
         </div>
         
     )
